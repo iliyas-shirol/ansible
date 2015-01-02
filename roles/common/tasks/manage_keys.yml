@@ -1,0 +1,5 @@
+---
+
+- name: Add ssh user keys
+  authorized_key: user={{ item.name }} key="{{ item.key }}"
+  with_items: ssh_users

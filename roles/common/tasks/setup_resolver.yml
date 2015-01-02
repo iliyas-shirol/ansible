@@ -1,0 +1,4 @@
+---
+
+- name: resolv.conf | Configuration file, /etc/resolv.conf
+  action: template src=templates/resolv.conf.j2 dest=/etc/resolv.conf

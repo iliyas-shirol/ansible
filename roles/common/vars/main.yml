@@ -1,0 +1,13 @@
+---
+
+# User credentials
+zakir_pass: $6$pD8w/g5l1X$ZeoztVXPkCWE.oKP1eHUaaYogOJ.qvbmGcMVFt4vK2g62rfF3FzLhwPsAPowfQHqbsvoZkIC2VydMlNE7GsrQ.
+deployer_pass: $6$pD8w/g5l1X$ZeoztVXPkCWE.oKP1eHUaaYogOJ.qvbmGcMVFt4vK2g62rfF3FzLhwPsAPowfQHqbsvoZkddfgydMlNE7GsrQ.
+
+# SSH Keys
+# Adding SSH Keys
+ssh_users:
+  - name: zakir
+    key: "{{ lookup('file', 'zakir.pub') }}"
+  - name: deployer
+    key: "{{ lookup('file', 'deployer.pub') }}"

@@ -1,0 +1,19 @@
+---
+
+# Yum update and reboot
+- name: upgrade all packages
+  yum: name=* state=latest update_cache=yes
+  when: update_yum_and_reboot
+
+# Ref: https://support.ansible.com/hc/en-us/articles/201958037-Reboot-a-server-and-wait-for-it-to-come-back
+- name: Restart server
+  shell: reboot
+  when: update_yum_and_reboot
+
+- name: Wait for server to restart
+  local_action:
+    module: wait_for
+      host={{ inventory_hostname }}
+      port=22
+      delay=1
+      timeout=300

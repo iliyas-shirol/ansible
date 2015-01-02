@@ -1,0 +1,21 @@
+---
+
+- name: Copy timezone script
+  copy: src=set_timezone_IST.sh
+        dest=/tmp/set_timezone_IST.sh
+        mode=0755
+
+- name: Machine hardware script
+  copy: src=machine_hardware_configuration_details.sh
+        dest=/tmp/machine_hardware_configuration_details.sh
+        mode=0755
+
+- name: Setting TZ
+  command: bash /tmp/set_timezone_IST.sh && rm  /tmp/set_timezone_IST.sh
+
+- name: Generating machine hardware configuration
+  command: bash /tmp/machine_hardware_configuration_details.sh && rm  /tmp/set_timezone_IST.sh
+
+
+
+

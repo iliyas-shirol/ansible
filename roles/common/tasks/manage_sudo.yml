@@ -1,0 +1,4 @@
+---
+
+- name: Adding zakir to sudoers
+  lineinfile: dest=/etc/sudoers.d/sysad line="zakir ALL=(ALL) ALL" state=present create=yes

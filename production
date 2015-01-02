@@ -1,0 +1,7 @@
+[mailservers]
+mail1.example.com
+mail2.example.com
+mail3.example.com
+
+# Enable below if you want to connect to the hosts with below user and run the playbook
+#ansible_connection=ssh ansible_ssh_user=deployer ansible_ssh_pass=yX4X4Z84P5j3M2Vh

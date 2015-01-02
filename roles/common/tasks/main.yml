@@ -1,0 +1,11 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- include: setup_hostname.yml
+- include: setup_resolver.yml
+- include: create_users.yml
+- include: manage_keys.yml
+- include: manage_sudo.yml
+- include: yum_update.yml
+- include: install_rpm_packages.yml
+- include: running_custom_scripts.yml

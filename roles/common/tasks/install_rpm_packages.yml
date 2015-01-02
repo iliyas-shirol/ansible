@@ -1,0 +1,44 @@
+---
+
+- rpm_key: state=present key=https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+
+# Use the below method if you're managing multiple releases of CentOS/RHEL
+- name: get epel-repo rpm RHEL6
+  get_url: dest=/tmp/epel-release.rpm  url=http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+  when: ansible_os_family == 'RedHat' and ansible_lsb.major_release|int == 6
+
+- name: get epel-repo rpm RHEL5
+  get_url: dest=/tmp/epel-release.rpm  url=http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+  when: ansible_os_family == 'RedHat' and ansible_lsb.major_release|int == 5
+
+# You can use the below method too.
+- name: install the repositories
+  yum: name={{ item }} state=present
+  with_items:
+    - http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm
+    - http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+    - http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+    - http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-13.ius.centos6.noarch.rpm
+    - http://rpms.famillecollet.com/enterprise/remi-release-6.rpm 
+
+
+- name: installing rpm packages
+    yum: pkg={{ item }} state=installed
+    when: ansible_os_family == 'RedHat' and ansible_lsb.major_release|int == 6
+    with_items:
+    - yum
+    - vim 
+    - gcc
+    - elinks 
+    - curl 
+    - atop 
+    - ntop 
+    - htop
+    - hping 
+    - dnstop 
+    - sysstat 
+    - nmon 
+    - dstat 
+    - fpdns
+    - dnsmasq
+    - db-devel

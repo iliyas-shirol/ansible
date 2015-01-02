@@ -1,0 +1,15 @@
+---
+# file: mailservers.yml
+- name: Provision a  mail-server
+  hosts: mailservers
+  sudo: yes
+  sudo_user: root
+  remote_user: deployer
+  vars:
+    - update_yum_and_reboot: yes
+  vars_files:
+    - env_vars/production.yml
+
+  roles:
+    - common
+

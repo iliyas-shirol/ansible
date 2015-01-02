@@ -1,0 +1,9 @@
+---
+
+# Use the following play's if you want to create an user on the host.
+
+- name: Creating user zakir
+  user: name=zakir password={{zakir_pass}} state=present comment='Zakir Shaikh' shell=/bin/bash createhome=yes update_password=always
+
+- name: Creating User deployer
+  user: name=deployer password={{deployer_pass}} state=present comment='Deployer' shell=/bin/bash createhome=yes update_password=always
